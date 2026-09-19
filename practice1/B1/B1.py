@@ -1,11 +1,13 @@
 from pathlib import Path
-file_number = input("Введите номер файла (от 0 до 2 включительно): ")
+file_name_inmap = input("Введите название исходного файла с данными: ")
+file_name_outmap = input("Введите название эталонного файла с правильным решением: ")
+file_name_outmap_new = input("Введите название файла который будет создан : ")
 
 folder = Path(__file__).resolve().parent
 
-input_file = folder / ("inmap" + file_number + ".dat")
-output_file = folder / ("my_outmap" + file_number + ".dat")
-outmap = folder / ("outmap" + file_number + ".dat")
+input_file = folder / (file_name_inmap)
+output_file = folder / (file_name_outmap_new)
+outmap = folder / (file_name_outmap)
 
 file = open(input_file, "r")
 
