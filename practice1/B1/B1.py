@@ -1,0 +1,58 @@
+from pathlib import Path
+file_number = input("Введите номер файла (от 0 до 2 включительно): ")
+
+folder = Path(__file__).resolve().parent
+
+input_file = folder / ("inmap" + file_number + ".dat")
+output_file = folder / ("my_outmap" + file_number + ".dat")
+outmap = folder / ("outmap" + file_number + ".dat")
+
+file = open(input_file, "r")
+
+first_line = file.readline().split()
+count = int(first_line[0])
+scale = float(first_line[1])
+
+map_distances = []
+
+for i in range(count):
+    distance = float(file.readline())
+    map_distances.append(distance)
+
+file.close()
+
+file = open(output_file, "w")
+
+file.write("Zanevski Dariush\n")
+file.write("Simple Map Distance Computations\n\n")
+file.write("Map Scale Factor:    {:.2f} miles per inch\n\n".format(scale))
+file.write("      Map       Mileage\n")
+file.write("      Measure   Distance\n")
+file.write("============================================================\n")
+
+total_distance = 0
+
+for i in range(count):
+    mileage = map_distances[i] * scale
+
+    mileage = int(mileage * 10 + 0.5) / 10
+    total_distance += mileage
+
+    file.write("# {:2d} {:6.1f} {:9.1f}\n".format(
+        i + 1, map_distances[i], mileage
+    ))
+
+file.write("============================================================\n")
+file.write("Total Distance: {:6.1f} miles\n".format(total_distance))
+
+file.close()
+
+result = output_file.read_text().splitlines()[1:]
+correct = outmap.read_text().splitlines()[1:]
+
+if result == correct:
+    print("Файлы my_outmap и исходный outmap совпадают")
+else:
+    print("Файлы my_outmap и исходный outmap не совпадают")
+
+print("Результат сохранён в файл", output_file)
