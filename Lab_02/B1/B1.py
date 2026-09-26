@@ -35,8 +35,10 @@ file.write("============================================================\n")
 total_distance = 0
 
 for i in range(count):
+    # Формула: расстояние = измерение на карте * масштаб.
     mileage = map_distances[i] * scale
 
+    # Округление до десятых: 
     mileage = int(mileage * 10 + 0.5) / 10
     total_distance += mileage
 
@@ -49,6 +51,7 @@ file.write("Total Distance: {:6.1f} miles\n".format(total_distance))
 
 file.close()
 
+# Первую строку с именем автора при сравнении не учитываем.
 result = output_file.read_text().splitlines()[1:]
 correct = outmap.read_text().splitlines()[1:]
 

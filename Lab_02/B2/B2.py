@@ -12,6 +12,7 @@ correct_file = folder / file_name_report_correct
 results = []
 
 with open(input_file, "r", encoding="utf-8") as file:
+    # Пропуск двух строк заголовка перед данными.
     next(file)
     next(file)
 
@@ -24,14 +25,14 @@ with open(input_file, "r", encoding="utf-8") as file:
         temperature = int(temperature)
         wind_speed = int(wind_speed)
 
+        # Формула: WC = 35.74 + 0.6215*T + (0.4275*T - 35.75)*V**0.16.
         wc_temperature = (
-            35.74
-            + 0.6215 * temperature
-            + (0.4275 * temperature - 35.75) * wind_speed**0.16
+            35.74 + 0.6215 * temperature + (0.4275 * temperature - 35.75) * wind_speed**0.16
         )
         wc_effect = wc_temperature - temperature
         results.append((time, wc_temperature, wc_effect))
 
+# Среднее = сумма всех значений WC / количество наблюдений.
 average = sum(wc_temperature for _, wc_temperature, _ in results) / len(results)
 
 with open(output_file, "w", encoding="utf-8") as file:
