@@ -1,0 +1,44 @@
+Programmer: Dwight Barnette
+CS 1044 Project 5 Fall 2008
+
+Precipitation report for Radford, VA during December, 1996
+
+Error         Day       Line
+Invalid        75          4
+Invalid        43          5
+
+Day Amount Graph
+  1   6.64 ***************************
+  2     NA
+  3     NA
+  4   1.57 *******
+  5     NA
+  6     NA
+  7     NA
+  8     NA
+  9     NA
+ 10     NA
+ 11     NA
+ 12   6.03 *************************
+ 13   4.39 ******************
+ 14   4.71 *******************
+ 15   9.88 ****************************************
+ 16   3.83 ****************
+ 17   0.29 **
+ 18   0.45 **
+ 19     NA
+ 20     NA
+ 21     NA
+ 22     NA
+ 23     NA
+ 24   1.73 *******
+ 25   3.13 *************
+ 26     NA
+ 27   0.00 
+ 28     NA
+ 29   9.56 ***************************************
+ 30     NA
+ 31     NA
+
+Minimum     Maximum     Average
+   0.00        9.88        1.68
